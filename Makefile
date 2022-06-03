@@ -6,13 +6,15 @@
 #    By: genouf <genouf@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/25 22:28:16 by genouf            #+#    #+#              #
-#    Updated: 2022/05/26 00:06:23 by genouf           ###   ########.fr        #
+#    Updated: 2022/06/03 10:09:36 by genouf           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = 	gnl/get_next_line_utils.c	\
 		gnl/get_next_line.c			\
 		sources/so_long.c			\
+		sources/utils.c				\
+		sources/arg_check.c			\
 		
 OBJS = ${SRCS:.c=.o}
 OBJDIR = exec
