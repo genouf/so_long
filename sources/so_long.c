@@ -6,7 +6,7 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:41:49 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/03 10:09:12 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/03 11:52:49 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,25 @@
 #include "../mlx/mlx.h"
 #include "../mlx/mlx_int.h"
 
-
-
 int	main(int argc, char **argv)
 {
+	int		fd;
+	int		ret;
+	char	*tmp;
+	char	*tmp2;
+	char	*file;
+
 	arg_check(argc, argv[1]);
+	fd = open(argv[1], O_RDONLY);
+	tmp = get_next_line(fd);
+	while (tmp)
+	{
+		tmp2 = file;
+		file = ft_strjoin(tmp2, tmp);
+		if (tmp2 != NULL)
+			free(tmp2);
+		tmp = get_next_line(fd);
+	}
 	return (0);
 }
 
