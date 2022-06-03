@@ -6,28 +6,11 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:45:12 by genouf            #+#    #+#             */
-/*   Updated: 2022/05/25 17:45:57 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/03 12:08:11 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/get_next_line.h"
-
-size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
-{
-	size_t	i;
-
-	if (dstsize != 0)
-	{
-		i = 0;
-		while (i + 1 < dstsize && src[i])
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	return (ft_strlen(src));
-}
 
 int	ft_find_line(char *buff, int buff_size)
 {
@@ -116,7 +99,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	result = process_line(result, buff, &ret, fd);
 	if (ret)
-		ft_substr(buff, ft_find_line(buff, 6 + 1), save);
+		ft_substr_gnl(buff, ft_find_line(buff, 6 + 1), save);
 	free(buff);
 	return (result);
 }

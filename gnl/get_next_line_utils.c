@@ -6,23 +6,11 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:45:29 by genouf            #+#    #+#             */
-/*   Updated: 2022/05/25 23:47:43 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/03 12:02:34 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/get_next_line.h"
-
-size_t	ft_strlen(char *s)
-{
-	size_t	i;
-
-	if (s == NULL)
-		return (0);
-	i = 0;
-	while (s && s[i] != '\0')
-		i++;
-	return (i);
-}
 
 void	*ft_calloc(size_t count, size_t size)
 {
@@ -44,35 +32,7 @@ void	*ft_calloc(size_t count, size_t size)
 	return (result);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
-{
-	size_t	size;
-	char	*result;
-	int		i;
-	int		j;
-
-	size = ft_strlen(s1) + ft_strlen(s2) + 1;
-	result = (char *)ft_calloc(sizeof(char), size);
-	if (result == NULL)
-		return (NULL);
-	i = 0;
-	while (s1 && s1[i] != '\0')
-	{
-		result[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (s2 && s2[j] != '\0')
-	{
-		result[i] = s2[j];
-		j++;
-		i++;
-	}
-	result[i] = '\0';
-	return (result);
-}
-
-void	ft_substr(char *s, unsigned int start, char *save)
+void	ft_substr_gnl(char *s, unsigned int start, char *save)
 {
 	size_t	i;
 	size_t	size;

@@ -6,7 +6,7 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:41:49 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/03 11:52:49 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/03 12:13:12 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(int argc, char **argv)
 			free(tmp2);
 		tmp = get_next_line(fd);
 	}
+	free(file);
 	return (0);
 }
 
