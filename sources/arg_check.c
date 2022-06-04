@@ -6,11 +6,17 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 10:04:07 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/03 10:44:51 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/04 18:43:25 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	print_error(char *reason)
+{
+	ft_putstr_fd(reason, 2);
+	exit(EXIT_FAILURE);
+}
 
 void	check_hidden_f(char *pathname)
 {
@@ -19,10 +25,7 @@ void	check_hidden_f(char *pathname)
 	slash_add = ft_strrchr(pathname, '/');
 	if ((slash_add == NULL && pathname[0] == '.') || (slash_add
 			&& slash_add[1] == '.'))
-	{
-		ft_putstr_fd("Error\nHidden files not supported !\n", 2);
-		exit(EXIT_FAILURE);
-	}
+		print_error("Error\nHidden files not supported !\n");
 }
 
 void	arg_check(int argc, char *pathname)
@@ -31,22 +34,13 @@ void	arg_check(int argc, char *pathname)
 	int	fd;
 
 	if (argc != 2)
-	{
-		ft_putstr_fd("Error\nWrong number of arguments !\n", 2);
-		exit(EXIT_FAILURE);
-	}
+		print_error("Error\nWrong number of arguments !\n");
 	check_hidden_f(pathname);
 	size = ft_strlen(pathname) - 4;
 	if (ft_strncmp(pathname + size, ".ber", 4) != 0)
-	{
-		ft_putstr_fd("Error\nWrong file type given !\n", 2);
-		exit(EXIT_FAILURE);
-	}
+		print_error("Error\nWrong file type given !\n");
 	fd = open(pathname, O_RDONLY | O_DIRECTORY);
 	if (fd != -1)
-	{
-		ft_putstr_fd("Error\nYou try to open a directory !\n", 2);
-		exit(EXIT_FAILURE);
-	}
+		print_error("Error\nYou try to open a directory !\n");
 	close(fd);
 }
