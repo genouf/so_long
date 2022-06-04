@@ -6,7 +6,7 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:59:03 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/04 09:57:45 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/04 15:23:12 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,17 @@ typedef struct s_data {
 	int		endian;
 }				t_data;
 
+typedef struct s_game {
+	char	**map;
+	int		nb_lines;
+	int		nb_cols;
+}				t_game;
+
+typedef struct s_check {
+	int items;
+	int exit;
+	int begin;
+}				t_check;
 /*		UTILS		*/
 int		rgb_to_int(int t, int r, int g, int b);
 void	mlx_draw_pixel(t_data *data, int x, int y, int color);
@@ -32,6 +43,8 @@ void	mlx_draw_pixel(t_data *data, int x, int y, int color);
 void	arg_check(int argc, char *pathname);
 /*		MAP		*/
 int		count_lines(char *pathname);
-char	**init_map(char *pathname, int nb_lines);
+t_game	init_map(char *pathname, int nb_lines);
+/*		PARSING_MAP		*/
+int		check_map(t_game game);
 
 #endif
