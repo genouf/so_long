@@ -6,7 +6,7 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:59:03 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/04 18:43:40 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/06 00:05:21 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ void	print_error(char *reason);
 int		count_lines(char *pathname);
 t_game	init_map(char *pathname, int nb_lines);
 /*		PARSING_MAP		*/
-int		check_map(t_game game);
+void	check_map(t_game game);
 
 #endif

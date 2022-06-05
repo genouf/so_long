@@ -6,7 +6,7 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:41:49 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/04 09:53:57 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/06 00:26:49 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,20 @@
 
 int	main(int argc, char **argv)
 {
-	char	**map;
+	t_game	game;
 
 	arg_check(argc, argv[1]);
-	map = init_map(argv[1], count_lines(argv[1]));
-	int i = 0;
-	while (i < 8)
-	{
-		printf("%s", map[i]);
-		printf("\n");
-		i++;
-	}
+	game = init_map(argv[1], count_lines(argv[1]));
+	//printf("%p", game.map);
+	// int i = 0;
+	// while (i < 8)
+	// {
+	// 	printf("%s", game.map[i]);
+	// 	printf("\n");
+	// 	i++;
+	// }
+	//printf("%c", game.map[0][0]);
+	check_map(game);
 	return (0);
 }
 
