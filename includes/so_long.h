@@ -6,7 +6,7 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:59:03 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/06 00:05:21 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/06 00:50:26 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ typedef struct s_game {
 }				t_game;
 
 typedef struct s_check {
-	int items;
-	int exit;
-	int begin;
+	int	items;
+	int	exit;
+	int	begin;
 }				t_check;
 /*		UTILS		*/
 int		rgb_to_int(int t, int r, int g, int b);
