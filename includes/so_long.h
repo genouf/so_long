@@ -6,7 +6,7 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:59:03 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/06 00:50:26 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/06 15:12:57 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ typedef struct s_data {
 	int		line_length;
 	int		endian;
 }				t_data;
+
+typedef struct s_imgbis {
+	void	*image;
+	int		height;
+	int		width;
+}			t_imgbis;
 
 typedef struct s_game {
 	char	**map;

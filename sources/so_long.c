@@ -6,7 +6,7 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:41:49 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/06 00:26:49 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/06 16:34:43 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 #include "../mlx/mlx.h"
 #include "../mlx/mlx_int.h"
 
-int	main(int argc, char **argv)
-{
-	t_game	game;
+// int	main(int argc, char **argv)
+// {
+// 	t_game	game;
 
-	arg_check(argc, argv[1]);
-	game = init_map(argv[1], count_lines(argv[1]));
-	//printf("%p", game.map);
-	// int i = 0;
-	// while (i < 8)
-	// {
-	// 	printf("%s", game.map[i]);
-	// 	printf("\n");
-	// 	i++;
-	// }
-	//printf("%c", game.map[0][0]);
-	check_map(game);
-	return (0);
-}
+// 	arg_check(argc, argv[1]);
+// 	game = init_map(argv[1], count_lines(argv[1]));
+// 	//printf("%p", game.map);
+// 	// int i = 0;
+// 	// while (i < 8)
+// 	// {
+// 	// 	printf("%s", game.map[i]);
+// 	// 	printf("\n");
+// 	// 	i++;
+// 	// }
+// 	//printf("%c", game.map[0][0]);
+// 	check_map(game);
+// 	return (0);
+// }
 
 // int	main(void)
 // {
@@ -60,3 +60,21 @@ int	main(int argc, char **argv)
 // 	mlx_loop(mlx);
 // 	return (0);
 // }
+
+int	main(void)
+{
+	void		*mlx;
+	void		*mlx_win;
+	t_imgbis	telesco;
+	t_imgbis	tree;
+	
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 60*6, 60*3, "Telesco");
+	telesco.image = mlx_xpm_file_to_image(mlx, "./images/agripro.xpm", &(telesco.width), &(telesco.height));
+	tree.image = mlx_xpm_file_to_image(mlx, "./images/ar.xpm", &(tree.width), &(tree.height));
+	//printf("%p\n", img);
+	mlx_put_image_to_window(mlx, mlx_win, telesco.image, 0, 0);
+	mlx_put_image_to_window(mlx, mlx_win, tree.image, 0, 0);
+	mlx_loop(mlx);
+	return (0);	
+}
