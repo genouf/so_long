@@ -6,7 +6,7 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:59:03 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/06 15:12:57 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/06 19:39:19 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,7 @@ int		count_lines(char *pathname);
 t_game	init_map(char *pathname, int nb_lines);
 /*		PARSING_MAP		*/
 void	check_map(t_game game);
+/*		DRAW_MAP		*/
+void	draw_bg(void* mlx, void *mlx_win, t_game game);
 
 #endif
