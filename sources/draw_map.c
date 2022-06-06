@@ -6,9 +6,13 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 17:42:09 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/06 17:42:31 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/06 17:55:50 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+void	draw_background(t_game game)
+{
+	
+}

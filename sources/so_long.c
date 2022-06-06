@@ -6,7 +6,7 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:41:49 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/06 16:34:43 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/06 18:34:09 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,48 +33,48 @@
 // 	return (0);
 // }
 
-// int	main(void)
-// {
-// 	void	*mlx;
-// 	void	*mlx_win;
-// 	t_data	img;
-
-// 	/* Initialisation de la mlx */
-// 	mlx = mlx_init();
-// 	if (mlx == NULL)
-// 		exit(EXIT_FAILURE);
-		
-// 	/* Creation de la fenetre */
-// 	mlx_win = mlx_new_window(mlx, 720, 720, "Hello world!");
-
-// 	/* Drawing */
-// 	/*mlx_pixel_put(mlx, mlx_win, 0, 100, 0x00FF0000);
-// 	mlx_string_put(mlx, mlx_win, 100, 100, 0x00FF0000, "Gabriel");*/
-	
-// 	/* Creation de l'image */
-// 	img.img = mlx_new_image(mlx, 720, 720);
-// 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-
-// 	/* Envoi de l'image et affichage */
-// 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-// 	mlx_loop(mlx);
-// 	return (0);
-// }
-
 int	main(void)
 {
 	void		*mlx;
 	void		*mlx_win;
+	int			nb_cols;
+	int			nb_lines;
+	int			color;
+	t_data		background;
 	t_imgbis	telesco;
 	t_imgbis	tree;
+	t_imgbis	road;
+	t_imgbis	straw_bale;
 	
+	color = rgb_to_int(0, 235, 213, 173); 
+	nb_cols = 10;
+	nb_lines = 4;
 	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 60*6, 60*3, "Telesco");
-	telesco.image = mlx_xpm_file_to_image(mlx, "./images/agripro.xpm", &(telesco.width), &(telesco.height));
-	tree.image = mlx_xpm_file_to_image(mlx, "./images/ar.xpm", &(tree.width), &(tree.height));
-	//printf("%p\n", img);
-	mlx_put_image_to_window(mlx, mlx_win, telesco.image, 0, 0);
+	mlx_win = mlx_new_window(mlx, 60*nb_cols, 60*nb_lines, "Telesco");
+	background.img = mlx_new_image(mlx, 60*nb_cols, 60*nb_lines);
+	background.addr = mlx_get_data_addr(background.img, &background.bits_per_pixel, &background.line_length, &background.endian);
+	int	i = 0;
+	int j = 0;
+	mlx_draw_pixel(&background, i, j, color);
+	while (i < 60 * nb_lines + 1)
+	{
+		j = 0;
+		while (j < 60 * nb_cols + 1)
+		{
+			mlx_draw_pixel(&background, j, i, color);
+			j++;
+		}
+		i++;
+	}
+	telesco.image = mlx_xpm_file_to_image(mlx, "./images/telesco.xpm", &(telesco.width), &(telesco.height));
+	tree.image = mlx_xpm_file_to_image(mlx, "./images/tree.xpm", &(tree.width), &(tree.height));
+	road.image = mlx_xpm_file_to_image(mlx, "./images/road.xpm", &(road.width), &(road.height));
+	straw_bale.image = mlx_xpm_file_to_image(mlx, "./images/straw_bale.xpm", &(straw_bale.width), &(straw_bale.height));
+	mlx_put_image_to_window(mlx, mlx_win, background.img, 0, 0);
+	mlx_put_image_to_window(mlx, mlx_win, telesco.image, 60, 0);
 	mlx_put_image_to_window(mlx, mlx_win, tree.image, 0, 0);
+	mlx_put_image_to_window(mlx, mlx_win, road.image, 120, 0);
+	mlx_put_image_to_window(mlx, mlx_win, straw_bale.image, 180, 0);
 	mlx_loop(mlx);
 	return (0);	
 }
