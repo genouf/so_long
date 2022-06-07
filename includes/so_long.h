@@ -6,7 +6,7 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:59:03 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/07 09:31:30 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/07 12:08:45 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,22 @@
 # include "../libft/libft.h"
 # include "get_next_line.h"
 # include <fcntl.h>
+
+typedef struct s_vars {
+	void	*mlx;
+	void	*win;
+}				t_vars;
+
+typedef struct s_coord {
+	int	x;
+	int y;
+}				t_coord;
+
+typedef struct s_play_g {
+	int		step_counter;
+	t_coord	pos_p;
+	char	pre_value;
+}				t_play_g;
 
 typedef struct s_data {
 	void	*img;
@@ -32,8 +48,7 @@ typedef struct s_img_f {
 }			t_img_f;
 
 typedef struct s_game {
-	void	*mlx;
-	void	*mlx_win;
+	t_vars	vars;
 	char	**map;
 	int		nb_lines;
 	int		nb_cols;
@@ -52,6 +67,8 @@ typedef struct s_check {
 int		rgb_to_int(int t, int r, int g, int b);
 void	mlx_draw_pixel(t_data *data, int x, int y, int color);
 void	init_img(void *mlx, t_game *game);
+int		close_prog(t_game game);
+void	init_play_struct(t_play_g *play, t_game game);
 /*		ARG_CHECK		*/
 void	arg_check(int argc, char *pathname);
 void	print_error(char *reason);

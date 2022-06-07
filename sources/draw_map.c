@@ -6,7 +6,7 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 17:42:09 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/07 09:40:27 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/07 11:17:32 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	draw_bg(t_game game)
 	int		color;
 
 	color = rgb_to_int(0, 235, 213, 173);
-	bg.img = mlx_new_image(game.mlx, 60 * game.nb_cols, 60 * game.nb_lines);
+	bg.img = mlx_new_image(game.vars.mlx, 60 * game.nb_cols, 60 * game.nb_lines);
 	bg.addr = mlx_get_data_addr(bg.img, &bg.bits_per_pixel, &bg.line_length,
 			&bg.endian);
 	i = 0;
@@ -36,20 +36,20 @@ void	draw_bg(t_game game)
 		}
 		i++;
 	}
-	mlx_put_image_to_window(game.mlx, game.mlx_win, bg.img, 0, 0);
+	mlx_put_image_to_window(game.vars.mlx, game.vars.win, bg.img, 0, 0);
 }
 
 void	draw_image(char c, t_game game, int x, int y)
 {
 	if (c == '1')
-		mlx_put_image_to_window(game.mlx, game.mlx_win, game.tree.image, x, y);
+		mlx_put_image_to_window(game.vars.mlx, game.vars.win, game.tree.image, x, y);
 	else if (c == 'E')
-		mlx_put_image_to_window(game.mlx, game.mlx_win, game.road.image, x, y);
+		mlx_put_image_to_window(game.vars.mlx, game.vars.win, game.road.image, x, y);
 	else if (c == 'P')
-		mlx_put_image_to_window(game.mlx, game.mlx_win,
+		mlx_put_image_to_window(game.vars.mlx, game.vars.win,
 			game.telesco.image, x, y);
 	else if (c == 'C')
-		mlx_put_image_to_window(game.mlx, game.mlx_win,
+		mlx_put_image_to_window(game.vars.mlx, game.vars.win,
 			game.straw_bale.image, x, y);
 }
 
