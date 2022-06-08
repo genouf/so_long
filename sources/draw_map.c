@@ -6,7 +6,7 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 17:42:09 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/07 11:17:32 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/08 17:22:44 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../mlx/mlx.h"
 #include "../mlx/mlx_int.h"
 
-void	draw_bg(t_game game)
+/*void	draw_bg(t_game game)
 {
 	t_data	bg;
 	int		i;
@@ -37,7 +37,7 @@ void	draw_bg(t_game game)
 		i++;
 	}
 	mlx_put_image_to_window(game.vars.mlx, game.vars.win, bg.img, 0, 0);
-}
+}*/
 
 void	draw_image(char c, t_game game, int x, int y)
 {
@@ -51,6 +51,9 @@ void	draw_image(char c, t_game game, int x, int y)
 	else if (c == 'C')
 		mlx_put_image_to_window(game.vars.mlx, game.vars.win,
 			game.straw_bale.image, x, y);
+	else if (c == '0')
+		mlx_put_image_to_window(game.vars.mlx, game.vars.win,
+			game.block.image, x, y);
 }
 
 void	render_map(t_game game)
@@ -73,6 +76,6 @@ void	render_map(t_game game)
 
 void	draw_map(t_game game)
 {
-	draw_bg(game);
+	//draw_bg(game);
 	render_map(game);
 }

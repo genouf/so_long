@@ -6,7 +6,7 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 09:58:18 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/06 00:41:37 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/08 19:48:57 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ void	check_border(t_game game)
 	while (i < game.nb_cols)
 	{
 		if (game.map[0][i] != '1' || game.map[game.nb_lines - 1][i] != '1')
-			print_error("Error\nThe map is not closed !\n");
+			free_init_map(game.map, game.nb_lines, "Error\nThe map is not closed !\n");
 		i++;
 	}
 	i = 0;
 	while (i < game.nb_lines)
 	{
 		if (game.map[i][0] != '1' || game.map[i][game.nb_cols - 1] != '1')
-			print_error("Error\nThe map is not closed !\n");
+			free_init_map(game.map, game.nb_lines, "Error\nThe map is not closed !\n");
 		i++;
 	}
 }
@@ -48,7 +48,7 @@ void	increase_check(t_check *check, char c)
 		check->items++;
 }
 
-void	browse_map(t_game game)
+void	browse_map(t_game *game)
 {
 	t_check	check;
 	int		i;
@@ -56,28 +56,29 @@ void	browse_map(t_game game)
 
 	i = 1;
 	increase_check(&check, 'i');
-	while (i < game.nb_lines - 1)
+	while (i < game->nb_lines - 1)
 	{
 		j = 1;
-		while (j < game.nb_cols - 1)
+		while (j < game->nb_cols - 1)
 		{
-			if (game.map[i][j] == 'E' || game.map[i][j] == 'P'
-					|| game.map[i][j] == 'C')
-				increase_check(&check, game.map[i][j]);
-			else if (game.map[i][j] != '0' && game.map[i][j] != '1')
-				print_error("Error\nBad caracter !\n");
+			if (game->map[i][j] == 'E' || game->map[i][j] == 'P'
+					|| game->map[i][j] == 'C')
+				increase_check(&check, game->map[i][j]);
+			else if (game->map[i][j] != '0' && game->map[i][j] != '1')
+				free_init_map(game->map, game->nb_lines, "Error\nBad caracter !\n");
 			j++;
 		}
 		i++;
 	}
 	if (check.begin < 1 || check.exit < 1 || check.items < 1)
-		print_error("Error\nOne of the mandatory elements is missing !\n");
+		free_init_map(game->map, game->nb_lines, "Error\nOne of the mandatory elements is missing !\n");
 	if (check.begin > 1)
-		print_error("Error\nMultiple player locations detected !\n");
+		free_init_map(game->map, game->nb_lines, "Error\nMultiple player locations detected !\n");
+	game->play.items_total = check.items;
 }
 
-void	check_map(t_game game)
+void	check_map(t_game *game)
 {
-	check_border(game);
+	check_border(*game);
 	browse_map(game);
 }

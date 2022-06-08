@@ -6,7 +6,7 @@
 #    By: genouf <genouf@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/25 22:28:16 by genouf            #+#    #+#              #
-#    Updated: 2022/06/06 19:39:50 by genouf           ###   ########.fr        #
+#    Updated: 2022/06/08 18:24:45 by genouf           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS = 	gnl/get_next_line_utils.c	\
 		sources/map.c				\
 		sources/parsing_map.c		\
 		sources/draw_map.c			\
+		sources/play.c				\
 		
 OBJS = ${SRCS:.c=.o}
 OBJDIR = exec

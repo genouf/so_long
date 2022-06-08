@@ -6,7 +6,7 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:59:03 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/07 12:08:45 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/08 18:20:23 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct s_coord {
 
 typedef struct s_play_g {
 	int		step_counter;
+	int		items_total;
+	int		items_col;
 	t_coord	pos_p;
 	char	pre_value;
 }				t_play_g;
@@ -48,14 +50,16 @@ typedef struct s_img_f {
 }			t_img_f;
 
 typedef struct s_game {
-	t_vars	vars;
-	char	**map;
-	int		nb_lines;
-	int		nb_cols;
-	t_img_f	telesco;
-	t_img_f	tree;
-	t_img_f	road;
-	t_img_f	straw_bale;
+	t_vars		vars;
+	t_play_g	play;
+	char		**map;
+	int			nb_lines;
+	int			nb_cols;
+	t_img_f		telesco;
+	t_img_f		tree;
+	t_img_f		road;
+	t_img_f		straw_bale;
+	t_img_f		block;
 }				t_game;
 
 typedef struct s_check {
@@ -67,7 +71,7 @@ typedef struct s_check {
 int		rgb_to_int(int t, int r, int g, int b);
 void	mlx_draw_pixel(t_data *data, int x, int y, int color);
 void	init_img(void *mlx, t_game *game);
-int		close_prog(t_game game);
+int		close_prog(t_game *game);
 void	init_play_struct(t_play_g *play, t_game game);
 /*		ARG_CHECK		*/
 void	arg_check(int argc, char *pathname);
@@ -75,9 +79,12 @@ void	print_error(char *reason);
 /*		MAP		*/
 int		count_lines(char *pathname);
 t_game	init_map(char *pathname, int nb_lines);
+void	free_init_map(char **map, int x, char *reason);
 /*		PARSING_MAP		*/
-void	check_map(t_game game);
+void	check_map(t_game *game);
 /*		DRAW_MAP		*/
 void	draw_map(t_game game);
-
+void	draw_bg(t_game game);
+/*		PLAY		*/
+int		monitor(int keycode, t_game *game);
 #endif

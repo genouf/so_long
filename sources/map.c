@@ -20,7 +20,8 @@ void	free_init_map(char **map, int x, char *reason)
 		x--;
 	}
 	free(map);
-	print_error(reason);
+	if (reason != NULL)
+		print_error(reason);
 }
 
 int	count_lines(char *pathname)
