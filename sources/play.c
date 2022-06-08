@@ -6,7 +6,7 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:27:21 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/08 19:41:18 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/08 19:58:18 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,7 @@ void	move(int direction , t_game *game)
 	//printf("total:%d\n", game->play.items_total);
 	//printf("col:%d\n", game->play.items_col);
 	init_direction(direction, *game, &next_position);
-	if (game->map[next_position.y][next_position.x] == '1')
-		return ;
-	else if (game->map[next_position.y][next_position.x] == 'E' && game->play.items_total == game->play.items_col)
+	if (game->map[next_position.y][next_position.x] == 'E' && game->play.items_total == game->play.items_col)
 		close_prog(game);
 	else if (game->map[next_position.y][next_position.x] == '0')
 	{
@@ -58,6 +56,7 @@ void	move(int direction , t_game *game)
 		game->play.pre_value = '0';
 		game->play.pos_p.x = next_position.x;
 		game->play.pos_p.y = next_position.y;
+		game->play.step_counter++;
 	}
 	else if (game->map[next_position.y][next_position.x] == 'C')
 	{
@@ -67,7 +66,9 @@ void	move(int direction , t_game *game)
 		game->play.pos_p.x = next_position.x;
 		game->play.pos_p.y = next_position.y;
 		game->play.items_col++;
+		game->play.step_counter++;
 	}
+	ft_printf("Number of steps : %d\n", game->play.step_counter);
 	draw_map(*game);
 }
 
