@@ -6,7 +6,7 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:27:21 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/09 12:59:05 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/09 15:46:29 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,12 @@ void	switch_position(t_game *game, t_coord next_position)
 {
 	if (game->map[next_position.y][next_position.x] == 'C')
 		game->play.items_col++;
-	game->map[next_position.y][next_position.x] = 'P';
 	game->map[game->play.pos_p.y][game->play.pos_p.x] = game->play.pre_value;
-	game->play.pre_value = '0';
+	if (game->map[next_position.y][next_position.x] == 'E')
+		game->play.pre_value = 'E';
+	else
+		game->play.pre_value = '0';
+	game->map[next_position.y][next_position.x] = 'P';
 	game->play.pos_p.x = next_position.x;
 	game->play.pos_p.y = next_position.y;
 	game->play.step_counter++;
@@ -60,7 +63,8 @@ void	move(int direction, t_game *game)
 			game->play.items_total == game->play.items_col)
 		close_prog(game);
 	else if (game->map[next_position.y][next_position.x] == 'C' ||
-			game->map[next_position.y][next_position.x] == '0')
+			game->map[next_position.y][next_position.x] == '0' ||
+			game->map[next_position.y][next_position.x] == 'E')
 		switch_position(game, next_position);
 	render_map(*game);
 }

@@ -6,7 +6,7 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 23:41:49 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/09 15:10:21 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/09 15:47:50 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 int	main(int argc, char **argv)
 {
 	t_game		game;
-	
+
 	arg_check(argc, argv[1]);
 	game = init_map(argv[1], count_lines(argv[1]));
 	init_play_struct(&game.play, game);
