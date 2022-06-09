@@ -6,7 +6,7 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 10:04:07 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/04 18:43:25 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/09 15:28:03 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,30 @@ void	check_hidden_f(char *pathname)
 		print_error("Error\nHidden files not supported !\n");
 }
 
+void	img_validity(char *path, int *check)
+{
+	int	fd;
+
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		*check = 0;
+	close(fd);
+}
+
+void	check_imgs(void)
+{
+	int	check;
+
+	check = 1;
+	img_validity("images/telesco.xpm", &check);
+	img_validity("images/tree.xpm", &check);
+	img_validity("images/road.xpm", &check);
+	img_validity("images/straw_bale.xpm", &check);
+	img_validity("images/block.xpm", &check);
+	if (check == 0)
+		print_error("Error\n An image isn't valid !\n");
+}
+
 void	arg_check(int argc, char *pathname)
 {
 	int	size;
@@ -43,4 +67,5 @@ void	arg_check(int argc, char *pathname)
 	if (fd != -1)
 		print_error("Error\nYou try to open a directory !\n");
 	close(fd);
+	check_imgs();
 }
