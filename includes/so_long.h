@@ -6,7 +6,7 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 22:59:03 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/08 18:20:23 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/09 12:55:17 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_vars {
 
 typedef struct s_coord {
 	int	x;
-	int y;
+	int	y;
 }				t_coord;
 
 typedef struct s_play_g {
@@ -83,8 +83,7 @@ void	free_init_map(char **map, int x, char *reason);
 /*		PARSING_MAP		*/
 void	check_map(t_game *game);
 /*		DRAW_MAP		*/
-void	draw_map(t_game game);
-void	draw_bg(t_game game);
+void	render_map(t_game game);
 /*		PLAY		*/
 int		monitor(int keycode, t_game *game);
 #endif

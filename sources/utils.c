@@ -6,7 +6,7 @@
 /*   By: genouf <genouf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:30:41 by genouf            #+#    #+#             */
-/*   Updated: 2022/06/08 18:56:22 by genouf           ###   ########.fr       */
+/*   Updated: 2022/06/09 12:57:32 by genouf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	init_img(void *mlx, t_game *game)
 			&(game->straw_bale.width), &(game->straw_bale.height));
 }
 
-int		close_prog(t_game *game)
+int	close_prog(t_game *game)
 {
 	free_init_map(game->map, game->nb_lines - 1, NULL);
 	mlx_destroy_image(game->vars.mlx, game->road.image);
@@ -59,7 +59,7 @@ int		close_prog(t_game *game)
 void	init_play_struct(t_play_g *play, t_game game)
 {
 	int	j;
-	int i;
+	int	i;
 
 	play->pre_value = '0';
 	play->step_counter = 0;
