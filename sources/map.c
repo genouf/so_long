@@ -90,9 +90,9 @@ t_game	init_map(char *pathname, int nb_lines)
 		game.map[x] = get_next_line(fd);
 		if (game.map[x] == NULL)
 			free_init_map(game.map, x - 1, "Malloc Error !\n");
-		if (x != nb_lines - 1 && ft_strlen(game.map[x]) != game.nb_cols + 1)
+		if (x != nb_lines - 1 && (int)ft_strlen(game.map[x]) != game.nb_cols + 1)
 			free_init_map(game.map, x, "Error\nThe Map is not a rectangle !\n");
-		else if (x == nb_lines - 1 && ft_strlen(game.map[x]) != game.nb_cols)
+		else if (x == nb_lines - 1 && (int)ft_strlen(game.map[x]) != game.nb_cols)
 			free_init_map(game.map, x, "Error\nThe Map is not a rectangle !\n");
 		if (x != nb_lines - 1 && game.map[x][game.nb_cols] == '\n')
 			game.map[x][game.nb_cols] = '\0';

@@ -6,7 +6,7 @@
 #    By: genouf <genouf@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/25 22:28:16 by genouf            #+#    #+#              #
-#    Updated: 2022/06/08 18:24:45 by genouf           ###   ########.fr        #
+#    Updated: 2022/06/11 11:31:28 by genouf           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ NAME = so_long
 RM = rm -f
 
 CC = gcc
-CLFAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 MAKE = make -C libft
 LIBA = libft/libft.a
